@@ -1,0 +1,6 @@
+<h1> Wiki Index Page</h1>
+<% @wikis.each do |wiki| %>
+<%= wiki.title %><br/>
+<%= wiki.body %><br/>
+<%= wiki.user.email %><br/><br/>
+<% end %>

@@ -1,0 +1,4 @@
+<h1><%= @wiki.title %></h2>
+<small>Created by <%= @wiki.user.email %> at <%= @wiki.created_at %></small>
+<p><%= @wiki.body %></p>
+<%= link_to "Delete", @wiki, method: :delete %>
