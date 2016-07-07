@@ -16,6 +16,7 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
 
   def edit
@@ -24,6 +25,7 @@ class WikisController < ApplicationController
 
   def update
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
     @wiki.assign_attributes(params.require(:wiki).permit(:title, :body, :private))
     if @wiki.save
       redirect_to @wiki
