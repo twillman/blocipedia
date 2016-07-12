@@ -3,7 +3,9 @@
   <br/>
   Body: <%= f.text_field :body %>
   <br/>
-  Private: <%= f.check_box :private %>
+  <% if current_user.role == "premium" %>
+    Private: <%= f.check_box :private %>
+  <% end %>
   <br/>
   Owner:
   <%= f.collection_select :user_id, User.all, :id, :email %>

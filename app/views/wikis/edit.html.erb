@@ -3,7 +3,11 @@
   <br/>
   Body: <%= f.text_field :body %>
   <br/>
+  <% if current_user.role != "standard" %>
   Private: <%= f.check_box :private %>
+  <% else %>
+    Private: <%= check_box_tag :private, '1', @wiki.private, disabled: true %></br>
+  <% end %>
   <br/>
   Owner:
   <%= f.collection_select :user_id, User.all, :id, :email %>

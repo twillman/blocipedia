@@ -1,5 +1,6 @@
 <h1><%= @wiki.title %></h2>
-<small>Created by <%= @wiki.user.email %> at <%= @wiki.created_at %></small>
+<small>Created by <%= @wiki.user.email %> at <%= @wiki.created_at %></small></br>
+Private: <%= check_box_tag :private, '1', @wiki.private, disabled: true %></br>
 <p><%= @wiki.body %></p>
 <%= link_to "Edit", edit_wiki_path %></br>
 <%= link_to "Delete", @wiki, method: :delete %>

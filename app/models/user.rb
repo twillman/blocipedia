@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   validates :role, inclusion: { in: %w(standard premium admin)}
 
+  has_many :wikis
+
   after_initialize do
     self.role ||= "standard"
   end
