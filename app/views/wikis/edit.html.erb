@@ -8,10 +8,17 @@
   <% else %>
     Private: <%= check_box_tag :private, '1', @wiki.private, disabled: true %></br>
   <% end %>
-  <br/>
-  Owner:
-  <%= f.collection_select :user_id, User.all, :id, :email %>
-  <Br/>
   <%= f.submit%>
-
+<% end %>
+<% if current_user.role == "admin" || @wiki.user_id == current_user.id %>
+<%= form_for Collaborator.new do |f| %>
+<%= f.collection_select :user_id, User.not_collab_users(@wiki), :id, :email %>
+<%= f.hidden_field :wiki_id, value: @wiki.id %>
+<%= f.submit %>
+<% end %>
+<%= form_for(:collaborator, :url => collaborator_path(:id), :html => {:method => :delete}) do |f|  %>
+<%= f.collection_select :user_id, @wiki.users, :id, :email %>
+<%= f.hidden_field :wiki_id, value: @wiki.id %>
+<%= f.submit %>
+<% end %>
 <% end %>

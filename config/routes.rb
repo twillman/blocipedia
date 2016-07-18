@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :charges, only: [:new, :create, :destroy]
   resources :wikis
+  resources :collaborators, only:[:create, :destroy]
   get 'welcome/index'
 
   get 'welcome/about'

@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   after_initialize do
     self.role ||= "standard"
   end
+
+  def self.not_collab_users(wiki)
+    self.all-wiki.users
+  end
 end
